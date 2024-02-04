@@ -8,46 +8,58 @@ on:
     branches:
       - main
   workflow_dispatch:
+   inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
 
 jobs:
-  build:
-    runs-on: windows-latest
-
+  print-tag:
+    runs-on: ubuntu-latest
+    if:  ${{ inputs.print_tags }} 
     steps:
-      - uses: actions/checkout@v4
+      - name: Print the input tag to STDOUT
+        run: echo  The tags are ${{ inputs.tags }} 
 
-      - name: Set up Java version
-        uses: actions/setup-java@v1
-        with:
-          java-version: '8'
+# jobs:
+#   build:
+#     runs-on: windows-latest
 
-      - name: Build with Maven
-        run: mvn clean install
+#     steps:
+#       - uses: actions/checkout@v4
 
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v3
-        with:
-          name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
+#       - name: Set up Java version
+#         uses: actions/setup-java@v1
+#         with:
+#           java-version: '8'
 
-  deploy:
-    runs-on: windows-latest
-    needs: build
-    environment:
-      name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+#       - name: Build with Maven
+#         run: mvn clean install
 
-    steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v3
-        with:
-          name: java-app
+#       - name: Upload artifact for deployment job
+#         uses: actions/upload-artifact@v3
+#         with:
+#           name: java-app
+#           path: '${{ github.workspace }}/target/*.jar'
 
-      - name: Deploy to Azure Web App
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: 'Spring-Azure-code'
-          slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0D6CE1893B7B408381C4DF0E5CCA36D3 }}
-          package: '*.jar'
+#   deploy:
+#     runs-on: windows-latest
+#     needs: build
+#     environment:
+#       name: 'Production'
+#       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+
+#     steps:
+#       - name: Download artifact from build job
+#         uses: actions/download-artifact@v3
+#         with:
+#           name: java-app
+
+#       - name: Deploy to Azure Web App
+#         id: deploy-to-webapp
+#         uses: azure/webapps-deploy@v2
+#         with:
+#           app-name: 'Spring-Azure-code'
+#           slot-name: 'Production'
+#           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0D6CE1893B7B408381C4DF0E5CCA36D3 }}
+#           package: '*.jar'
