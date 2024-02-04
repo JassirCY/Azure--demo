@@ -12,6 +12,49 @@ on:
       logLevel:
         description: 'Log level'
         required: true
+      allowed_host:
+        description: 'allowed host'
+        required: true
+      logLeve3:
+        description: 'Log level3'
+        required: true
+      logLeve4:
+        description: 'Log leve4'
+        required: true
+      logLeve5:
+        description: 'Log leve5'
+        required: true
+      logLeve6:
+        description: 'Log leve6'
+        required: true
+      logLeve7:
+        description: 'Log leve7'
+        required: true
+      logLevel8:
+        description: 'Log leve8'
+        required: true
+      logLeve9:
+        description: 'Log leve9'
+        required: true
+      logLevel0:
+        description: 'Log level0'
+        required: true
+      logLevel1:
+        description: 'Log level1'
+        required: true
+      logLevel2:
+        description: 'Log level2'
+        required: true
+      logLevel3:
+        description: 'Log level3'
+        required: true
+      logLevel4:
+        description: 'Log level4'
+        required: true
+      logLevel5:
+        description: 'Log level5'
+        required: true        
+      
 
 jobs:
   print-tag:
