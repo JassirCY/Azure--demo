@@ -44,6 +44,9 @@ jobs:
     steps:
       - name: Print the input tag to STDOUT
         run: echo  The tags are ${{ inputs.logLevel }} 
+      - name: prompt
+        id: prompt
+        run: echo $(read -p 'input:' input && echo $input)
 
 # jobs:
 #   build:
