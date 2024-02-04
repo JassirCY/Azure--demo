@@ -36,26 +36,7 @@ on:
       logLeve9:
         description: 'Log leve9'
         required: true
-      logLevel0:
-        description: 'Log level0'
-        required: true
-      logLevel1:
-        description: 'Log level1'
-        required: true
-      logLevel2:
-        description: 'Log level2'
-        required: true
-      logLevel3:
-        description: 'Log level3'
-        required: true
-      logLevel4:
-        description: 'Log level4'
-        required: true
-      logLevel5:
-        description: 'Log level5'
-        required: true        
-      
-
+     
 jobs:
   print-tag:
     runs-on: ubuntu-latest
