@@ -29,7 +29,8 @@ jobs:
 
   demojob:
     runs-on: ubuntu-latest
-    # if: needs.print-tag.outputs.envname == 'dev'
+    needs: [print-tag]
+    if: github.event.inputs.logLevel == 'true' && needs.print-tag.outputs.envname == 'dev'
     environment: dev
     steps:
       - name: Print the demo
