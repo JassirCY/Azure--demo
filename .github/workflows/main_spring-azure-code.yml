@@ -24,7 +24,7 @@ jobs:
         id: fetch
         run: |
           echo  The tags are ${{ inputs.logLevel }}
-          echo "envname=dev" >> "$GITHUB_OUTPUT"
+          echo "envname=qa" >> "$GITHUB_OUTPUT"
 
   demojob:
     runs-on: ubuntu-latest
