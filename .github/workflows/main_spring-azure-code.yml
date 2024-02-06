@@ -12,37 +12,21 @@ on:
       logLevel:
         description: 'Log level'
         required: true
-      allowed_host:
-        description: 'allowed host'
-        required: true
-      logLeve3:
-        description: 'Log level3'
-        required: true
-      logLeve4:
-        description: 'Log leve4'
-        required: true
-      logLeve5:
-        description: 'Log leve5'
-        required: true
-      logLeve6:
-        description: 'Log leve6'
-        required: true
-      logLeve7:
-        description: 'Log leve7'
-        required: true
-      logLevel8:
-        description: 'Log leve8'
-        required: true
-      logLeve9:
-        description: 'Log leve9'
-        required: true
+     
      
 jobs:
   print-tag:
     runs-on: ubuntu-latest
+    if: ${{ inputs.logLevel }} == 'true'
     steps:
       - name: Print the input tag to STDOUT
         run: echo  The tags are ${{ inputs.logLevel }}
+
+  demojob:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print the demo
+        run: echo  The demo are ${{ inputs.logLevel }}
 
 # jobs:
 #   build:
