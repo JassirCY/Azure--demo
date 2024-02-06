@@ -17,7 +17,6 @@ on:
 jobs:
   print-tag:
     runs-on: ubuntu-latest
-    if: github.event.inputs.logLevel == 'true'
     outputs:
       envname: ${{steps.fetch.outputs.envname}}
     steps:
