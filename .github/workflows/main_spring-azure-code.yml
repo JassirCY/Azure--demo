@@ -18,12 +18,19 @@ jobs:
   print-tag:
     runs-on: ubuntu-latest
     if: github.event.inputs.logLevel == 'true'
+    outputs:
+      envname: ${{steps.fetch.outputs.envname}}
     steps:
       - name: Print the input tag to STDOUT
-        run: echo  The tags are ${{ inputs.logLevel }}
+        id: fetch
+        run: |
+          echo  The tags are ${{ inputs.logLevel }}
+          echo "envname==dev" >> "$GITHUB_OUTPUT"
 
   demojob:
     runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.logLevel == 'true' && needs.print-tag.outputs.envname == 'dev' }}
+    environment: dev
     steps:
       - name: Print the demo
         run: echo  The demo are ${{ inputs.logLevel }}
