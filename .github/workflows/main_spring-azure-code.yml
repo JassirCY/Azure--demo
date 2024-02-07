@@ -25,6 +25,7 @@ jobs:
         run: |
           echo  The tags are ${{ inputs.logLevel }}
           echo "envname=qa" >> "$GITHUB_OUTPUT"
+          echo "${{github.ref}}"
 
   demojob:
     runs-on: ubuntu-latest
